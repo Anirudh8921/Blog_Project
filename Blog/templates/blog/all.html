@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Collection</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: #212529;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 2.5rem;
+            color: #28a745;
+        }
+
+        .blog-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            margin: 0;
+            padding: 15px;
+            font-size: 1.6rem;
+            color: #212529;
+        }
+
+        .card p {
+            padding: 0 15px;
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .card a {
+            display: block;
+            text-align: center;
+            background-color: #28a745;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .card a:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Blog Collection</h1>
+    <div class="blog-cards">
+        {% for post in posts %}
+            <div class="card">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.description|slice:":150" }}...</p>
+                <a href="{% url 'detail' post.slug %}">Read More</a>
+            </div>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2023 Your Blog Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
