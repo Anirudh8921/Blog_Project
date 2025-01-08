@@ -85,22 +85,16 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- Blogger Information Section -->
+    
         <h4>Blogger Information</h4>
         <div class="form-group">
             {{ blogger_form.as_p }}
         </div>
 
-        <!-- Post Information Section -->
-        <h4>Post Information</h4>
-        <div class="form-group">
-            {{ post_form.as_p }}
-        </div>
 
-        <!-- Buttons -->
         <div class="text-center mt-4">
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
+            <a href="{% url 'main' %}" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>
